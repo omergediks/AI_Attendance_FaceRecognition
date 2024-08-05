@@ -7,7 +7,7 @@ import face_recognition
 import sqlite3
 import numpy as np
 import datetime
-
+#omergediks
 app = Flask(__name__)
 CORS(app)
 
