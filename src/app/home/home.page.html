@@ -1,20 +1,41 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Face Recognition BTK</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <!-- Form for adding a person -->
+  <ion-item>
+    <ion-label position="floating">First Name</ion-label>
+    <ion-input [(ngModel)]="firstName" type="text"></ion-input>
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item>
+    <ion-label position="floating">Last Name</ion-label>
+    <ion-input [(ngModel)]="lastName" type="text"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addPerson()">Add Person</ion-button>
+  <ion-button expand="full" (click)="checkAttendance()">Kontrol</ion-button>
+
+  <!-- List of recognized faces -->
+  <ion-list *ngIf="recognizedFaces.length > 0">
+    <ion-list-header>
+      <ion-label>Recognized Faces</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let face of recognizedFaces">
+      <ion-thumbnail slot="start">
+        <img [src]="face.photoDataUrl" alt="Recognized Face"/>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ face.name }}</h2>
+        <p>Confidence: {{ face.confidence | percent }}</p>
+        <p>Box: {{ face.box | json }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Display the processed image -->
+  <ion-img *ngIf="processedImageDataUrl" [src]="processedImageDataUrl"></ion-img>
 </ion-content>

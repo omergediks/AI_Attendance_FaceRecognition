@@ -25,3 +25,25 @@
 #container a {
   text-decoration: none;
 }
+
+ion-item {
+  margin-bottom: 16px;
+}
+
+ion-button {
+  margin-top: 16px;
+}
+
+ion-list {
+  margin-top: 16px;
+}
+
+ion-thumbnail img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+ion-img {
+  width: 100%;
+  margin-top: 16px;
+}
